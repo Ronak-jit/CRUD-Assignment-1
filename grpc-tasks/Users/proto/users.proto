@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "github.com/Ronak-Searce/grpc-tasks/users/proto";
+
+message UserInfo {
+  string id = 1;
+  string first_name = 2;
+  string last_name = 3;
+}
+
+message Id {
+  string value = 1;
+}
+
+message Status {
+  int32 value =1;
+}
+
+message CreateUserRequest{
+  string firstname = 1;
+  string lastname = 2;
+}
+
+message Empty {
+}
+
+service Userervice {
+
+  rpc CreatUser(UserInfo) returns (UserInfo);
+  rpc GetUser(Id) returns (UserInfo);
+  rpc UpdateUser(UserInfo) returns (Status);
+  rpc DeleteUser(Id) returns (Status);
+  rpc CreateUser (CreateUserRequest) returns (UserInfo);
+}
